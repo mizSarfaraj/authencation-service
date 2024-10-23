@@ -1,0 +1,22 @@
+server:
+  port: '5500'
+
+
+spring:
+  application:
+    name: authenticate-service
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/auth-db
+
+authentication:
+  security:
+    token:
+      secret: UGVyc29uYWwgUHJvamVjdCBQcmFjdGljZSB8IEF1dGhlbnRpY2F0aW9u
+      expiration: 3600000
+    refresh-token:
+      secret: UGVyc29uYWwgUHJvamVjdCBQcmFjdGljZSB8IEF1dGhlbnRpY2F0aW9uIHwgUmVmcmVzaCBUb2tlbg
+      expiration: 86400000
