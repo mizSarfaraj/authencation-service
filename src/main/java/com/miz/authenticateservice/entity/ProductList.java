@@ -16,7 +16,7 @@ public class ProductList {
     @Column(name = "product_id")
     private Long productId;
 
-    @Column(name = "create_at", nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createAt;
 
     @Column(name = "product", nullable = false)
