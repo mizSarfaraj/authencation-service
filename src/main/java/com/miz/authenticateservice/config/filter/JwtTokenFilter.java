@@ -47,11 +47,15 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader(AUTHORIZATION);
+
+        // this code should not be here but Resource configuration is not working for me now. 
+        // need debug or correct the code there.
         String requestURI = request.getRequestURI();
         if (this.bypassedURIs.contains(requestURI)) {
             filterChain.doFilter(request, response);
             return;
         }
+        
         if (Objects.isNull(authHeader) || !authHeader.startsWith(BEARER)) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
